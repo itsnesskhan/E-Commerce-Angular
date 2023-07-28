@@ -1,45 +1,29 @@
 
-  <mat-toolbar [style.backgroundColor]="'#0000ff'" [style.color]="'white'">
-    <button mat-icon-button  (click)="sidenav.toggle()">
-      <mat-icon >menu</mat-icon>
-    </button>
-    <span>E-commerce</span>
-    <span class="example-spacer"></span>
-        <i class="fa-solid fa-cart-shopping" ></i>
-        <span style="margin-left:10px;margin-right: 20px;"><a  routerLink="/home">Cart</a></span>
+<mat-toolbar [style.backgroundColor]="' #0066cc'" [style.color]="'white'">
+  <button mat-icon-button #toggle (click)="sidenav.toggle()">
+    <mat-icon >menu</mat-icon>
+  </button>
+  <span>E-commerce</span>
+  <span class="example-spacer"></span>
+      <i class="fa-solid fa-cart-shopping" ></i>
+      <span style="margin-left:10px;margin-right: 20px;"><a  routerLink="/cart">Cart</a></span>
 
-        <i class="fa-solid fa-right-to-bracket" ></i>
-        <span style="margin-left:10px;margin-right: 20px;"><a  routerLink="/home">Login</a></span>
+      <i class="fa-solid fa-right-to-bracket" ></i>
+      <span style="margin-left:10px;margin-right: 20px;"><a  routerLink="/home">Login</a></span>
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" opened mode="side" >
-    <ul class="nav-list">
-        <li class="nav-list-item" *ngFor="let item of sideNavItems ">
-          <i class="{{item.icon}}" ></i>
-          <span><a  routerLink="/home">{{item.name}}</a></span>
-        </li>
-    </ul>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div>
-      <!-- <router-outlet></router-outlet> -->
-
-<mat-grid-list cols="4" rowHeight="1:1">
-  <mat-grid-tile *ngFor="let product of products">
-    <a >
-      <mat-card>
-        <img mat-card-image [src]="product.imageUrl" alt="{{ product.name }}"  height="180px" width="270px">
-        <mat-card-content>
-          <h2 mat-card-title>{{ product.name }}</h2>
-          <p mat-card-subtitle>Price: ${{ product.price }}</p>
-          <p mat-card-content>{{ product.description }}</p>
-        </mat-card-content>
-      </mat-card>
-    </a>
-  </mat-grid-tile>
-</mat-grid-list>
-
-    </div>
-  </mat-sidenav-content>
+<mat-sidenav #sidenav="matSidenav" opened mode="side" >
+  <ul class="nav-list">
+      <li class="nav-list-item" *ngFor="let item of sideNavItems ">
+        <i class="{{item.icon}}" ></i>
+        <span><a  routerLink="/home">{{item.name}}</a></span>
+      </li>
+  </ul>
+</mat-sidenav>
+<mat-sidenav-content>
+  <div >
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-content>
 </mat-sidenav-container>

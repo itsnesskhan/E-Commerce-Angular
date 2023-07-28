@@ -78,7 +78,7 @@ mat-drawer:hover {
 }
 
 .nav-list-item:hover{
-  background-color: rgba(148, 129, 5, 0.6);
+  background-color: rgba(195, 196, 201, 0.925);
   border-radius: 10px;
 }
 
@@ -87,7 +87,22 @@ mat-drawer:hover {
   /* border: 1px solid black; */
   text-transform: uppercase;
 }
-a{
+mat-toolbar a{
   text-decoration: none;  
+  color: white;
+  font-size: medium;
 }
 
+mat-sidenav a{
+  text-decoration: none;
+  color: black;
+  font-size: large;
+  font-weight: 550;
+}
+
+.mat-card {
+  margin: 10px;
+}
+mat-sidenav-container {
+  height: calc(100vh - 65px);
+}

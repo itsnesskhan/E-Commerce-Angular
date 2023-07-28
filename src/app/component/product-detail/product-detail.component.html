@@ -1,1 +1,22 @@
-<p>Product Details compoent</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <!-- Image -->
+        <div class="product-image">
+          <img [src]="product.imageUrl"   alt="{{ product.name }}" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-md-8">
+        <!-- Details -->
+        <div class="product-details">
+        <h2>{{ product.name }}</h2>
+          <p><b>PRICE :</b> ${{ product.price }}</p>
+          <p><b>DESCRPTION :</b> {{ product.description }}</p>
+          <span>
+            <button class="btn btn-primary mx-3">ADD TO CART</button>
+          <button class="btn btn-success">BUY NOW</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>

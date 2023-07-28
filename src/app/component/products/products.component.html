@@ -1,0 +1,20 @@
+<div>
+    <!-- <router-outlet></router-outlet> -->
+
+    <mat-grid-list [cols]="getGridCols()" rowHeight="1:1">
+      <mat-grid-tile *ngFor="let product of products">
+        <a [routerLink]="['/products',product.id,'details']">
+          <mat-card>
+            <img mat-card-image [src]="product.imageUrl" data-src='./assets/images/shoes-2-jpg-1000x1000.webp' class="lazy-img"  alt="{{ product.name }}" height="180px" width="270px">
+            <mat-card-content>
+              <h2 mat-card-title>{{ product.name }}</h2>
+              <p mat-card-subtitle>Price: ${{ product.price }}</p>
+              <p mat-card-content>{{ product.description }}</p>
+            </mat-card-content>
+          </mat-card>
+        </a>
+      </mat-grid-tile>
+    </mat-grid-list>
+    
+    
+</div>

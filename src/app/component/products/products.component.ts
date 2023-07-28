@@ -1,46 +1,45 @@
-import { AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
-import { Product } from './model/product';
-import {SideBarItems } from './model/ProductCategory';
-
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { AfterViewInit, Component } from '@angular/core';
+import { Product } from 'src/app/model/product';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css']
 })
-export class AppComponent implements  AfterViewInit {
-  title = 'angular-ecommerce';
-  @ViewChild(MatSidenav) sidenav!: MatSidenav
-
+export class ProductsComponent  {
+  public cols: number = 3;
 
   constructor(private breakpointObserver: BreakpointObserver) { }
 
-  
-  ngAfterViewInit(): void {
-    this.breakpointObserver.observe(['(max-width:800px)']).subscribe((res) => {
-      if (res.matches) {
-        this.sidenav.mode = 'over';
-        this.sidenav.close();
-      }
-      else {
-        this.sidenav.mode = 'side';
-        this.sidenav.open()
-      }     
-    });
-  }
+  // lazy loading image
+  // ngAfterViewInit(): void {
+  //   const imageTarget = document.querySelectorAll('img[data-src]');
+  //   console.log(imageTarget)
+  //   const loadImage = function (entries:any, observe:any){
+  //     const [entry] = entries;
+  //     console.log(entry);
 
+  //     if(!entry.isIntersecting) return;
 
-  
+  //     //replace src with data-srcc
+  //     console.log(entry.target.src ," ", entry.target.dataset.src)
+  //     entry.target.src = entry.target.dataset.src;
 
-  sideNavItems: SideBarItems[] = [
-    { name: 'home', icon: 'fa-solid fa-house' },
-    { name: 'products', icon: 'fa-solid fa-box' },
-    { name: 'order', icon: 'fa-solid fa-cart-shopping' },
-    { name: 'settings', icon: 'fa-solid fa-gear' },
-    // Add more categories here with their respective icons
-  ];
+  //     entry.target.addEventListener('load', ()=>{
+  //       entry.target.classList.remove('lazy-img');
+  //     })
+
+  //     observe.unobserve(entry.target)
+      
+  //   }
+    
+  //   const imageObserver = new IntersectionObserver(loadImage, {
+  //     root:null,
+  //     threshold: 0
+  //   })
+  //   imageTarget.forEach(img=> imageObserver.observe(img))
+  // }
 
   products: Product[] = [
     {
@@ -130,8 +129,37 @@ export class AppComponent implements  AfterViewInit {
 
   ];
 
+  ngOnInit() {
+    this.calculateCols();
+    this.observeScreenChanges();
+  }
 
- 
+  calculateCols() {
+    if (this.breakpointObserver.isMatched(Breakpoints.Handset)) {
+      this.cols = 1;
+    } else if (this.breakpointObserver.isMatched(Breakpoints.Tablet)) {
+      this.cols = 2;
+    } else {
+      this.cols = 3;
+    }
+  }
+
+  observeScreenChanges() {
+    this.breakpointObserver.observe([
+      Breakpoints.Handset,
+      Breakpoints.Tablet,
+      Breakpoints.Web
+    ]).subscribe(result => {
+      if (result.matches) {
+        this.calculateCols();
+      }
+    });
+  }
+
+  getGridCols(): number {
+    return this.cols;
+  }
+
+  
 
 }
-
