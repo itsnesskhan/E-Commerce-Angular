@@ -1,13 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes} from '@angular/router';
-import { ProductDetailComponent } from './component/product-detail/product-detail.component';
-import { ProductsComponent } from './component/products/products.component';
-import { ProductDashboardComponent } from './component/product-dashboard/product-dashboard.component';
-import { CartComponent } from './component/cart/cart.component';
 import { SignupComponent } from './component/agent/signup/signup.component';
-import { LoginComponent } from './component/login/login.component';
-import { EmployeeInfoComponent } from './component/employee-info/employee-info.component';
 import { AgentDashboardComponent } from './component/agent/agent-dashboard/agent-dashboard.component';
 import { FlightBookingComponent } from './component/agent/flight-booking/flight-booking.component';
 import { HotelBookingComponent } from './component/agent/hotel-booking/hotel-booking.component';
@@ -24,7 +18,6 @@ import { HotelServicesDetailsComponent } from './component/customer/hotel-servic
 import { FlightServicesDetailsComponent } from './component/customer/flight-services-details/flight-services-details.component';
 import { HomeComponent } from './component/home/home.component';
 import { AuthGuard } from './guard/auth.guard';
-// import { SignupComponent } from './component/signup/signup.component';
 
 const routes: Routes = [
     {path:'agent',
@@ -37,8 +30,6 @@ const routes: Routes = [
     {path:'vehical-booking', component:VehicalBookingComponent, canActivate:[AuthGuard]}
   ],
 },
-
-
   {
     path:'customer',
     children:[
@@ -55,12 +46,8 @@ const routes: Routes = [
   },
 
 {path: '', component: HomeComponent},
-{path:'signup', component: SignupComponent},
-{path:'cart', component: CartComponent},
-{path:'login', component: LoginComponent},
-// {path:'', redirectTo:'/products',pathMatch:'full'},
-{path:'employee/info', component:EmployeeInfoComponent},
-  {path:'**', redirectTo:'/products', pathMatch:'full'},
+{path:'', redirectTo:'/',pathMatch:'full'},
+{path:'**', redirectTo:'/products', pathMatch:'full'},
 ]
 
 @NgModule({

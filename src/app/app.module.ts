@@ -10,11 +10,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
-import { ProductDetailComponent } from './component/product-detail/product-detail.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ProductsComponent } from './component/products/products.component';
-import { ProductDashboardComponent } from './component/product-dashboard/product-dashboard.component';
-import { CartComponent } from './component/cart/cart.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
@@ -24,10 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './component/agent/signup/signup.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { LoginComponent } from './component/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { EmployeeInfoComponent } from './component/employee-info/employee-info.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { AgentDashboardComponent } from './component/agent/agent-dashboard/agent-dashboard.component';
 import { HotelBookingComponent } from './component/agent/hotel-booking/hotel-booking.component';
@@ -72,15 +65,8 @@ const material = [
 @NgModule({
   declarations: [
     AppComponent,
-    ProductDetailComponent,
-    ProductsComponent,
-    ProductDashboardComponent,
-    CartComponent,
     SignupComponent,
-    LoginComponent,
     SigninComponent,
-    LoadingSpinnerComponent,
-    EmployeeInfoComponent,
     NavbarComponent,
     AgentDashboardComponent,
     HotelBookingComponent,
