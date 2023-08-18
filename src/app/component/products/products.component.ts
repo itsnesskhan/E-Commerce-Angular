@@ -1,6 +1,9 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AfterViewInit, Component } from '@angular/core';
 import { Product } from 'src/app/model/product';
+import { SharedService } from 'src/app/service/shared.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-products',
@@ -8,9 +11,22 @@ import { Product } from 'src/app/model/product';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent  {
+  sidenavIsClosed = false;
+  private subscription: Subscription;
   public cols: number = 3;
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  toggleSidenavStatus() {
+    this.sidenavIsClosed = !this.sidenavIsClosed; // Toggle the value
+  }
+
+  constructor(private sharedService: SharedService,
+              private breakpointObserver:BreakpointObserver
+    ) {
+    this.subscription = this.sharedService.sidenavClosed$.subscribe(() => {
+      this.toggleSidenavStatus()
+      this.sidenavIsClosed?this.cols=4:this.cols=3
+    });
+  }
 
   // lazy loading image
   // ngAfterViewInit(): void {

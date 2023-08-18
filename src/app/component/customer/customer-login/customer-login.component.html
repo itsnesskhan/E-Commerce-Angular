@@ -1,0 +1,30 @@
+<div class="center-container">
+    <div class="container custom-form">
+        <div class="row">
+            <div class="col-6 mx-auto border my-2">
+                {{loginForm.errors?.['misMatch']}}
+                <!-- {{loginForm.value | json}} -->
+                <form [formGroup]="loginForm" class="m-3" (ngSubmit)="onSubmit()">
+                    <h1 class="text-center">Customer Login</h1>
+                    <mat-form-field class="field" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="pat@example.com" name="email" formControlName="email" type="email">
+                    </mat-form-field>
+
+                    <mat-form-field class="field" appearance="outline">
+                        <mat-label>Enter your password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-block gradient-custom-4" [disabled]="loginForm.invalid"
+                            type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

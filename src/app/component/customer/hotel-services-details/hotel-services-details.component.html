@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div *ngIf="booking" class="booking-details">
+                <h2>Hotel Booking Details</h2>
+                <table class="table">
+                    <tr>
+                        <th>Check-in Date</th>
+                        <td>{{ booking.checkInDate }}</td>
+                    </tr>
+                    <tr>
+                        <th>Check-out Date</th>
+                        <td>{{ booking.checkOutDate }}</td>
+                    </tr>
+                    <tr>
+                        <th>Number of Guests</th>
+                        <td>{{ booking.numberOfGuests }}</td>
+                    </tr>
+                    <tr>
+                        <th>Room Type</th>
+                        <td>{{ booking.roomType }}</td>
+                    </tr>
+                    <tr>
+                        <th>Special Requests</th>
+                        <td>{{ booking.specialRequests }}</td>
+                    </tr>
+                </table>
+              
+                <!-- Add the Book button -->
+                <button (click)="bookNow()" class="book-button">Book Now</button>
+            </div>
+        </div>
+    </div>
+</div>

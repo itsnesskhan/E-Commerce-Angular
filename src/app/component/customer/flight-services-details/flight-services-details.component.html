@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div *ngIf="booking" class="booking-details">
+                <h2>Flight Booking Details</h2>
+                <table class="table">
+                    <tr>
+                        <th>Flight Name:</th>
+                        <td>{{ booking.flightName }}</td>
+                    </tr>
+                    <tr>
+                        <th>From:</th>
+                        <td>{{ booking.from }}</td>
+                    </tr>
+                    <tr>
+                        <th>To:</th>
+                        <td>{{ booking.to }}</td>
+                    </tr>
+                    <tr>
+                        <th>Departure Date:</th>
+                        <td>{{ booking.departureDate }}</td>
+                    </tr>
+                    <tr>
+                        <th>Passengers:</th>
+                        <td>{{ booking.passengers }}</td>
+                    </tr>
+                    <tr>
+                        <th>Class:</th>
+                        <td>{{ booking.class }}</td>
+                    </tr>
+                </table>
+              
+                <!-- Add the Book button -->
+                <button (click)="bookNow()" class="book-button">Book Now</button>
+            </div>
+        </div>
+    </div>
+</div>

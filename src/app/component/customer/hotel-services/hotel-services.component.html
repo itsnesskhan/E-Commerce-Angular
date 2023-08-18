@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col mx-auto">
+            <h2 class="text-center">Available Hotel Bookings</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Hotel Name</th>
+                        <th>Check-in Date</th>
+                        <th>Check-out Date</th>
+                        <th>Number of Guests</th>
+                        <th>Room Type</th>
+                        <th>Special Requests</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let booking of hotelBookings" [routerLink]="['/customer/hotel-service-details', booking.id]">
+                        <td><a [routerLink]="['/customer/hotel-service-details', booking.id]">{{ booking.hotelName }}</a></td>
+                        <td>{{ booking.checkInDate }}</td>
+                        <td>{{ booking.checkOutDate }}</td>
+                        <td>{{ booking.numberOfGuests }}</td>
+                        <td>{{ booking.roomType }}</td>
+                        <td>{{ booking.specialRequests }}</td>
+                      </tr>                      
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

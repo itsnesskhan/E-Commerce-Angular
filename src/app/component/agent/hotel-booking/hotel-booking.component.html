@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-content>
+      <h2 class="text-center">Hotel Booking</h2>
+      <form>
+
+          <mat-form-field class="full-width">
+              <mat-label>Hotel Name</mat-label>
+              <input matInput type="text" placeholder="Hotel Name" [(ngModel)]="booking.hotelName" name="hotelName">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+              <mat-label>Check-In Date</mat-label>
+              <input matInput type="date" placeholder="Check-In Date" [(ngModel)]="booking.checkInDate" name="checkInDate">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+              <mat-label>Check-Out Date</mat-label>
+              <input matInput type="date" placeholder="Check-Out Date" [(ngModel)]="booking.checkOutDate" name="checkOutDate">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+              <mat-label>Number of Guests</mat-label>
+              <input matInput type="number" placeholder="Number of Guests" [(ngModel)]="booking.numberOfGuests" name="numberOfGuests">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+              <mat-label>Room Type</mat-label>
+              <mat-select [(ngModel)]="booking.roomType" name="roomType">
+                  <mat-option value="single">Single</mat-option>
+                  <mat-option value="double">Double</mat-option>
+                  <mat-option value="suite">Suite</mat-option>
+              </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+              <mat-label>Special Requests</mat-label>
+              <textarea matInput placeholder="Special Requests" [(ngModel)]="booking.specialRequests" name="specialRequests"></textarea>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" (click)="submitBooking()">Book Hotel</button>
+      </form>
+  </mat-card-content>
+</mat-card>

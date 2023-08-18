@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-content>
+      <h2 class="text-center">Vehicle Booking</h2>
+      <form [formGroup]="vehicleBookingForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="full-width">
+          <mat-label>Pickup Location</mat-label>
+          <input matInput type="text" placeholder="Pickup Location" formControlName="pickupLocation" required>
+        </mat-form-field>
+  
+        <mat-form-field class="full-width">
+          <mat-label>Pickup Date</mat-label>
+          <input matInput type="date" placeholder="Pickup Date" formControlName="pickupDate" required>
+        </mat-form-field>
+  
+        <mat-form-field class="full-width">
+          <mat-label>Pickup Time</mat-label>
+          <input matInput type="time" placeholder="Pickup Time" formControlName="pickupTime" required>
+        </mat-form-field>
+  
+        <mat-form-field class="full-width">
+          <mat-label>Duration in Hours</mat-label>
+          <input matInput type="number" placeholder="Duration in Hours" formControlName="durationInHours" required>
+        </mat-form-field>
+  
+        <mat-form-field class="full-width">
+          <mat-label>Vehicle Type</mat-label>
+          <mat-select formControlName="vehicleType" required>
+            <mat-option *ngFor="let type of vehicleTypes" [value]="type">{{ type }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" type="submit">Book Vehicle</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

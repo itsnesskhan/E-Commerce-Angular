@@ -3,6 +3,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
 import { Product } from './model/product';
 import {SideBarItems } from './model/ProductCategory';
+import { SharedService } from './service/shared.service';
 
 
 @Component({
@@ -10,25 +11,35 @@ import {SideBarItems } from './model/ProductCategory';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements  AfterViewInit {
+export class AppComponent implements OnInit{
   title = 'angular-ecommerce';
   @ViewChild(MatSidenav) sidenav!: MatSidenav
 
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private breakpointObserver: BreakpointObserver,
+              private sharedService:SharedService          
+    ) { }
+  ngOnInit(): void {
+    
+  }
 
   
-  ngAfterViewInit(): void {
-    this.breakpointObserver.observe(['(max-width:800px)']).subscribe((res) => {
-      if (res.matches) {
-        this.sidenav.mode = 'over';
-        this.sidenav.close();
-      }
-      else {
-        this.sidenav.mode = 'side';
-        this.sidenav.open()
-      }     
-    });
+  // ngAfterViewInit(): void {
+  //   this.breakpointObserver.observe(['(max-width:800px)']).subscribe((res) => {
+  //     if (res.matches) {
+  //       console.log('width cm ho gyi')
+  //       this.sidenav.mode = 'over';
+  //       this.sidenav.close();
+  //     }
+  //     else {
+  //       this.sidenav.mode = 'side';
+  //       this.sidenav.open()
+  //     }     
+  //   });
+  // }
+
+  sidenavClosed(){
+    this.sharedService.notifySidenavClosed()
   }
 
 

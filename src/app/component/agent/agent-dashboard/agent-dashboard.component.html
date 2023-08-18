@@ -1,0 +1,39 @@
+<router-outlet></router-outlet>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>My Services</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-form-field>
+                        <mat-label>My Services</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let service of myServices" [value]="service">
+                                {{ service }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-md-6">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>All Services</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-form-field>
+                        <mat-label>All Services</mat-label>
+                        <mat-select (selectionChange)="onSelectService($event.value)">
+                            <mat-option *ngFor="let service of allServices" [value]="service">
+                                {{ service }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

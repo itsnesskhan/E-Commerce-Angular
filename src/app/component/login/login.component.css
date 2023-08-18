@@ -1,0 +1,12 @@
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  /* Adjust form width if needed */
+  .custom-form {
+    width: 100%;
+  /*  max-width: 800px;  Set a maximum width for the form */
+  }

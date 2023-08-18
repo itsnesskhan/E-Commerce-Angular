@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col mx-auto">
+            <h2 class="text-center">Available Flight Bookings</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Flight Name</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Departure Date</th>
+                        <th>Passengers</th>
+                        <th>Class</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let booking of flightBookings" [routerLink]="['/customer/flight-service-details', booking.id]">
+                        <td><a [routerLink]="['/customer/flight-service-details', booking.id]">{{ booking.flightName }}</a></td>
+                        <td>{{ booking.from }}</td>
+                        <td>{{ booking.to }}</td>
+                        <td>{{ booking.departureDate }}</td>
+                        <td>{{ booking.passengers }}</td>
+                        <td>{{ booking.class }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

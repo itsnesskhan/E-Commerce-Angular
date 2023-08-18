@@ -5,20 +5,62 @@ import { ProductDetailComponent } from './component/product-detail/product-detai
 import { ProductsComponent } from './component/products/products.component';
 import { ProductDashboardComponent } from './component/product-dashboard/product-dashboard.component';
 import { CartComponent } from './component/cart/cart.component';
-import { SignupComponent } from './component/signup/signup.component';
+import { SignupComponent } from './component/agent/signup/signup.component';
+import { LoginComponent } from './component/login/login.component';
+import { EmployeeInfoComponent } from './component/employee-info/employee-info.component';
+import { AgentDashboardComponent } from './component/agent/agent-dashboard/agent-dashboard.component';
+import { FlightBookingComponent } from './component/agent/flight-booking/flight-booking.component';
+import { HotelBookingComponent } from './component/agent/hotel-booking/hotel-booking.component';
+import { VehicalBookingComponent } from './component/agent/vehical-booking/vehical-booking.component';
+import { SigninComponent } from './component/agent/signin/signin.component';
+import { CustomerDashboardComponent } from './component/customer/customer-dashboard/customer-dashboard.component';
+import { CustomerSignupComponent } from './component/customer/customer-signup/customer-signup.component';
+import { CustomerLoginComponent } from './component/customer/customer-login/customer-login.component';
+import { HotelServicesComponent } from './component/customer/hotel-services/hotel-services.component';
+import { FlightServicesComponent } from './component/customer/flight-services/flight-services.component';
+import { VehicalServicesComponent } from './component/customer/vehical-services/vehical-services.component';
+import { VehicaServicesDetailsComponent } from './component/customer/vehica-services-details/vehica-services-details.component';
+import { HotelServicesDetailsComponent } from './component/customer/hotel-services-details/hotel-services-details.component';
+import { FlightServicesDetailsComponent } from './component/customer/flight-services-details/flight-services-details.component';
+import { HomeComponent } from './component/home/home.component';
+import { AuthGuard } from './guard/auth.guard';
 // import { SignupComponent } from './component/signup/signup.component';
 
 const routes: Routes = [
-    {path:'products', component: ProductDashboardComponent,
+    {path:'agent',
   children: [
-    {path:'', component: ProductsComponent},
-    {path:':id/details', component: ProductDetailComponent},
+    {path:'', component: AgentDashboardComponent, canActivate:[AuthGuard]},
+    {path:'signup', component: SignupComponent},
+    {path:'signin', component:SigninComponent},
+    {path:'flight-booking', component:FlightBookingComponent, canActivate:[AuthGuard]},
+    {path:'hotel-booking', component:HotelBookingComponent, canActivate:[AuthGuard]},
+    {path:'vehical-booking', component:VehicalBookingComponent, canActivate:[AuthGuard]}
   ],
 },
+
+
+  {
+    path:'customer',
+    children:[
+      {path:'',component:CustomerDashboardComponent, canActivate:[AuthGuard]},
+      {path:'signup',component:CustomerSignupComponent},
+      {path:'signin',component:CustomerLoginComponent},
+      {path:'hotel-service',component:HotelServicesComponent, canActivate:[AuthGuard]},
+      {path:'flight-service',component:FlightServicesComponent, canActivate:[AuthGuard]},
+      {path:'vehical-service',component:VehicalServicesComponent, canActivate:[AuthGuard]},
+      {path:'vehical-service-details/:id', component:VehicaServicesDetailsComponent, canActivate:[AuthGuard]},
+      {path:'flight-service-details/:id', component:FlightServicesDetailsComponent, canActivate:[AuthGuard]},
+      {path:'hotel-service-details/:id', component:HotelServicesDetailsComponent, canActivate:[AuthGuard]}
+    ]
+  },
+
+{path: '', component: HomeComponent},
 {path:'signup', component: SignupComponent},
 {path:'cart', component: CartComponent},
-{path:'', redirectTo:'/products',pathMatch:'full'},
-  {path:'**', redirectTo:'/products', pathMatch:'full'}
+{path:'login', component: LoginComponent},
+// {path:'', redirectTo:'/products',pathMatch:'full'},
+{path:'employee/info', component:EmployeeInfoComponent},
+  {path:'**', redirectTo:'/products', pathMatch:'full'},
 ]
 
 @NgModule({

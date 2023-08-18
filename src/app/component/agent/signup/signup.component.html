@@ -1,0 +1,94 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <mat-card class="my-3">
+                <form (ngSubmit)="formSubmit(signform)" #signform="ngForm">
+                    <h1 class="text-center">Agent Sign Up</h1>
+                    <div class="m-3">
+                            <!-- {{user | json}} -->
+                            <!-- {{fname.touched}} {{fname.pristine}} {{fname.dirty}} -->
+                            <!-- {{fname.invalid}}
+                            {{isSubmited}}
+                            {{fname.errors?.['required'] | json}} -->
+        
+                        <div class="form-fields-container">
+                            <mat-form-field class="field mr-2" appearance="outline">
+                                <mat-label>First Name</mat-label>
+                                <input matInput placeholder="first name" #fname="ngModel" [(ngModel)]="user.fname" required name="fname">
+                               <div *ngIf="fname.invalid  && (isSubmited || fname.touched)" >
+                                    <mat-hint class="text-danger" *ngIf="fname.errors?.['required']">first name
+                                        is required</mat-hint>
+                                </div>
+                            </mat-form-field>
+
+                            <mat-form-field class="field mx-auto" appearance="outline">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput placeholder="last name" #lname="ngModel" required [(ngModel)]="user.lname"  name="lname">
+                                <div *ngIf="lname.invalid && (isSubmited || lname.touched)">
+                                    <mat-hint class="text-danger" *ngIf="lname.errors?.['required']">last name
+                                        is required</mat-hint>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                        <mat-form-field class="field" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <!-- {{email.errors | json}} -->
+                            <input matInput #email="ngModel"  [(ngModel)]="user.email" placeholder="pat@example.com" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email" [(ngModel)]="user.email" type="email">
+                            <div *ngIf="email.invalid && (isSubmited || email.touched)">
+                                <mat-hint class="text-danger" *ngIf="email.errors?.['required']">email is required</mat-hint>
+                                <mat-hint class="text-danger" *ngIf="email.errors?.['pattern']">enter a valid email address
+                                </mat-hint>
+                            </div>
+                        </mat-form-field>
+                        <div>
+                            <label>Gender</label>
+                            <mat-radio-group color="primary"  appearance="outline" [(ngModel)]="user.gender" name="gender">
+                              <mat-radio-button *ngFor="let gen of radioItems" [value]="gen">{{gen}}</mat-radio-button>
+                            </mat-radio-group>
+                          </div>
+
+                        
+                          <mat-form-field class="field">
+                              <mat-label>Date of Birth</mat-label>
+                              <input matInput [matDatepicker]="picker" placeholder="12/**/**91" #dob="ngModel" name="dob" [(ngModel)]="user.dob" required>
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker></mat-datepicker>
+                              <mat-hint class="text-danger" [class.hide]="dob.valid || !isSubmited">Please select a date</mat-hint>
+                              
+                        </mat-form-field>
+                        <!-- <h1>{{dob.valid}} {{isSubmited}}</h1> -->
+
+                        <mat-form-field class="field" appearance="outline">
+                            <mat-label>Enter your password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" #password="ngModel" name="password" [(ngModel)]="user.password" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <div *ngIf="password.invalid && (isSubmited || password.touched)"  >
+                                <mat-hint class="text-danger" *ngIf="password.errors?.['required']">password is required</mat-hint>
+                                <mat-hint class="text-danger" *ngIf="password.errors?.['pattern']">password is too weak </mat-hint>
+                            </div>
+                          </mat-form-field>
+    
+                        <mat-form-field class="field" appearance="outline">
+                            <mat-label>Phone</mat-label>
+                            <input matInput placeholder="97********01" name="mobile" #mobile="ngModel" [(ngModel)]="user.mobile" required pattern="^((\\+91-?)|0)?[0-9]{10}$">
+                            <div *ngIf="mobile.invalid && (isSubmited || mobile.touched)"  >
+                                <mat-hint class="text-danger" *ngIf="mobile.errors?.['required']">mobile number is required</mat-hint>
+                                <mat-hint class="text-danger" *ngIf="mobile.errors?.['pattern']">enter a valid mobile number
+                                </mat-hint>
+                            </div>
+                        </mat-form-field>
+                
+                        <div class="container text-center">
+                            <button class="text-center" mat-raised-button color="accent" type="submit">Resgister</button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </mat-card>
+            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div *ngIf="booking" class="booking-details">
+                <h2>Vehical Booking Details</h2>
+                <p><strong>Pickup Location:</strong> {{ booking.pickupLocation }}</p>
+                <p><strong>Pickup Date:</strong> {{ booking.pickupDate }}</p>
+                <p><strong>Pickup Time:</strong> {{ booking.pickupTime }}</p>
+                <p><strong>Duration (Hours):</strong> {{ booking.durationInHours }}</p>
+                <p><strong>Vehicle Type:</strong> {{ booking.vehicleType }}</p>
+              
+                <!-- Add the Book button -->
+                <button (click)="bookNow()" class=" book-button">Book Now</button>
+              </div>
+              
+        </div>
+    </div>
+</div>

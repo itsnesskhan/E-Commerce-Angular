@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col mx-auto">
+            <h2 class="text-center">Available Vehicals</h2>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Pickup Location</th>
+                    <th>Pickup Date</th>
+                    <th>Pickup Time</th>
+                    <th>Duration (Hours)</th>
+                    <th>Vehicle Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let booking of vehicleBookings" [routerLink]="['/vehicle-details', booking.id]">
+                    <td><a [routerLink]="['/customer','vehical-service-details', booking.id]">{{ booking.pickupLocation }}</a></td>
+                    <td>{{ booking.pickupDate }}</td>
+                    <td>{{ booking.pickupTime }}</td>
+                    <td>{{ booking.durationInHours }}</td>
+                    <td>{{ booking.vehicleType }}</td>
+                  </tr>
+                </tbody>
+              </table>
+               
+        </div>
+    </div>
+</div>

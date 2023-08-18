@@ -20,10 +20,31 @@ import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { FormsModule } from '@angular/forms';
-import { SignupComponent } from './component/signup/signup.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './component/agent/signup/signup.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { LoginComponent } from './component/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { EmployeeInfoComponent } from './component/employee-info/employee-info.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
+import { AgentDashboardComponent } from './component/agent/agent-dashboard/agent-dashboard.component';
+import { HotelBookingComponent } from './component/agent/hotel-booking/hotel-booking.component';
+import { FlightBookingComponent } from './component/agent/flight-booking/flight-booking.component';
+import { VehicalBookingComponent } from './component/agent/vehical-booking/vehical-booking.component';
+import { SigninComponent } from './component/agent/signin/signin.component';
+import { CustomerDashboardComponent } from './component/customer/customer-dashboard/customer-dashboard.component';
+import { CustomerLoginComponent } from './component/customer/customer-login/customer-login.component';
+import { CustomerSignupComponent } from './component/customer/customer-signup/customer-signup.component';
+import { HotelServicesComponent } from './component/customer/hotel-services/hotel-services.component';
+import { FlightServicesComponent } from './component/customer/flight-services/flight-services.component';
+import { VehicalServicesComponent } from './component/customer/vehical-services/vehical-services.component';
+import { VehicaServicesDetailsComponent } from './component/customer/vehica-services-details/vehica-services-details.component';
+import { FlightServicesDetailsComponent } from './component/customer/flight-services-details/flight-services-details.component';
+import { HotelServicesDetailsComponent } from './component/customer/hotel-services-details/hotel-services-details.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { HomeComponent } from './component/home/home.component';
 
 
 
@@ -44,7 +65,8 @@ const material = [
     MatSelectModule,
     MatCheckboxModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule
 ]
 
 @NgModule({
@@ -54,7 +76,26 @@ const material = [
     ProductsComponent,
     ProductDashboardComponent,
     CartComponent,
-    SignupComponent
+    SignupComponent,
+    LoginComponent,
+    SigninComponent,
+    LoadingSpinnerComponent,
+    EmployeeInfoComponent,
+    NavbarComponent,
+    AgentDashboardComponent,
+    HotelBookingComponent,
+    FlightBookingComponent,
+    VehicalBookingComponent,
+    CustomerDashboardComponent,
+    CustomerLoginComponent,
+    CustomerSignupComponent,
+    HotelServicesComponent,
+    FlightServicesComponent,
+    VehicalServicesComponent,
+    VehicaServicesDetailsComponent,
+    FlightServicesDetailsComponent,
+    HotelServicesDetailsComponent,
+    HomeComponent
   ],
 
   imports: [
@@ -64,6 +105,8 @@ const material = [
     AppRoutingModule,
     ...material,
     FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
