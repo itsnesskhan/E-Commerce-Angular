@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './component/agent/signup/signup.component';
 import { AgentDashboardComponent } from './component/agent/agent-dashboard/agent-dashboard.component';
 import { FlightBookingComponent } from './component/agent/flight-booking/flight-booking.component';
@@ -20,34 +20,11 @@ import { HomeComponent } from './component/home/home.component';
 import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
-    {path:'agent',
-  children: [
-    {path:'', component: AgentDashboardComponent, canActivate:[AuthGuard]},
-    {path:'signup', component: SignupComponent},
-    {path:'signin', component:SigninComponent},
-    {path:'flight-booking', component:FlightBookingComponent, canActivate:[AuthGuard]},
-    {path:'hotel-booking', component:HotelBookingComponent, canActivate:[AuthGuard]},
-    {path:'vehical-booking', component:VehicalBookingComponent, canActivate:[AuthGuard]}
-  ],
-},
-  {
-    path:'customer',
-    children:[
-      {path:'',component:CustomerDashboardComponent, canActivate:[AuthGuard]},
-      {path:'signup',component:CustomerSignupComponent},
-      {path:'signin',component:CustomerLoginComponent},
-      {path:'hotel-service',component:HotelServicesComponent, canActivate:[AuthGuard]},
-      {path:'flight-service',component:FlightServicesComponent, canActivate:[AuthGuard]},
-      {path:'vehical-service',component:VehicalServicesComponent, canActivate:[AuthGuard]},
-      {path:'vehical-service-details/:id', component:VehicaServicesDetailsComponent, canActivate:[AuthGuard]},
-      {path:'flight-service-details/:id', component:FlightServicesDetailsComponent, canActivate:[AuthGuard]},
-      {path:'hotel-service-details/:id', component:HotelServicesDetailsComponent, canActivate:[AuthGuard]}
-    ]
-  },
 
-{path: '', component: HomeComponent},
-{path:'', redirectTo:'/',pathMatch:'full'},
-{path:'**', redirectTo:'/products', pathMatch:'full'},
+  { path: '', component: HomeComponent },
+  { path: 'agent', loadChildren: () => import('./component/agent/agent.module').then(m => m.AgentModule) },
+  { path: 'customer', loadChildren: () => import('./component/customer/customer.module').then(m => m.CustomerModule) },
+{ path: '**', redirectTo: '/', pathMatch: 'full' },
 ]
 
 @NgModule({
